@@ -23,19 +23,19 @@ React Native Push Notifications com suporte de integração OneSignal.
 		- [Manipulando notificações](#handling-notifications)
 		- [Enviando e obtendo tags OneSignal](#sending-and-getting-onesignal-tags)
 		- [Obtendo ID e Token para Push](#getting-player-id-and-push-token)
-		- [Set Email for Better Targeting](#set-email-for-better-targeting)
+		- [Definir email para um melhor targeting](#set-email-for-better-targeting)
 		- [Habilitar Vibração](#enable-vibration)
 		- [Habilitar Som](#enable-sound)
-		- [Set In App Focus Behavior](#set-in-app-focus-behavior)
-		- [Change User Subscription Status](#change-user-subscription-status)
-		- [Check Push Notification and User Subscription Status](#check-push-notification-and-user-subscription-status)
-		- [Post Notification (Peer-to-Peer Notifications)](#post-notification-peer-to-peer-notifications)
+		- [Definir comportamento da notificação em relação ao celular](#set-in-app-focus-behavior)
+		- [Mudar inscrição do status do usuário](#change-user-subscription-status)
+		- [Checar Push Notification e inscrição do status do usuário](#check-push-notification-and-user-subscription-status)
+		- [Enviar Notificação (Peer-to-Peer Notificação)](#post-notification-peer-to-peer-notifications)
 		- [Prompt Location](#prompt-location)
-		- [Clear Notifications (Android Only)](#clear-notifications-android-only)
-		- [Cancel Notifications (Android Only)](#cancel-notifications-android-only)
-		- [Check Push Notification Permissions (iOS Only)](#check-push-notification-permissions-ios-only)
-		- [Request Push Notification Permissions (iOS Only)](#request-push-notification-permissions-ios-only)
-		- [Register For Push Notifications (iOS Only)](#register-for-push-notifications-ios-only)
+		- [Limpar Notificações (Somente Android)](#clear-notifications-android-only)
+		- [Cancelar Notificações (Somente Android)](#cancel-notifications-android-only)
+		- [Checar Permissões de Notificação (Somente iOS)](#check-push-notification-permissions-ios-only)
+		- [Pedir Permissões de Notificação (Somente iOS)](#request-push-notification-permissions-ios-only)
+		- [Registro para Notificação (iOS Only)](#register-for-push-notifications-ios-only)
 	- [FAQ / Repeating Issues](#faq--repeating-issues)
 		- [Issue 1 - Multiple dex files define:](#issue-1---multiple-dex-files-define)
 		- [Issue 2 - Multiple dex files define (Again):](#issue-2---multiple-dex-files-define-again)
@@ -46,15 +46,15 @@ React Native Push Notifications com suporte de integração OneSignal.
 
 <!-- /TOC -->
 
-## Breaking Change
+## Mudanças impactantes
 
-Make sure you read this documentation carefully, as the usage instructions had been changed since `react-native-onesignal v3.0.2`.
+Certifique-se de ler atentamente esta documentação, pois as instruções de uso foram alteradas desde `react-native-onesignal v3.0.2`.
 
-## Note Regarding 0.39 <= React Native >= 0.40 Support
+## Nota a respeito de suporte para 0.39 <= React Native >= 0.40
 
-TL;DR - Install the latest version, doesn't matter on what RN version you are.
+TL;DR - Não importa qual é versão do React Native está, instale a última versão  da bilioteca do OneSignal.
 
-Since version 3.0.2, this module supports backwards compatibiltiy with React Native 0.39 and below, without installing a custom version. Everyone should now update to the latest version available for this module.
+Desde a versão 3.0.2, esse módulo suporta compatibilidade com versões anteriores do React Native 0.39 e ou abaixo, instalando uma versão customizada. Todos devem agora atualizar para a última versão disponibilizada para esse módulo.
 
 ## Executando o projeto de exemplo
 
@@ -139,11 +139,11 @@ android {
 }
 ```
 
-## iOS Installation
+## Instalação para IOS
 
-### iOS Push Certificate
- * Open OneSignal account here: https://onesignal.com/
- * Follow OneSignal's instructions on generating an iOS Push Certificate: https://documentation.onesignal.com/docs/generate-an-ios-push-certificate
+### Certificado de Push para iOS
+ * Abra a conta do OneSignal aqui: https://onesignal.com/
+ * Siga as instruções do OneSignal para gerar Certificado de Push no iOS: https://documentation.onesignal.com/docs/generate-an-ios-push-certificate
 
 ### Add Required Capabilities
 1. Select the root project and Under Capabilities Enable "Push Notifications".
