@@ -10,24 +10,24 @@ React Native Push Notifications com suporte de integração OneSignal.
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [React Native OneSignal](#react-native-onesignal)
-	- [Breaking Change](#breaking-change)
-	- [Note Regarding 0.39 <= React Native >= 0.40 Support](#note-regarding-039--react-native--040-support)
-	- [Running Example project](#running-example-project)
-	- [Installation](#installation)
-	- [Android Installation](#android-installation)
+	- [Mudanças impactantes](#breaking-change)
+	- [Nota a respeito de suporte para 0.39 <= React Native >= 0.40](#note-regarding-039--react-native--040-support)
+	- [Executando o exemplo do projeto](#running-example-project)
+	- [Instalação](#installation)
+	- [Instalação do Android](#android-installation)
 		- [Adding the Code](#adding-the-code)
-	- [iOS Installation](#ios-installation)
+	- [Instalação do IOS](#ios-installation)
 		- [Adding the Code](#adding-the-code)
-	- [Usage](#usage)
+	- [Uso](#usage)
 	- [API](#api)
-		- [Handling Notifications](#handling-notifications)
-		- [Sending and Getting OneSignal Tags](#sending-and-getting-onesignal-tags)
-		- [Getting Player ID and Push Token](#getting-player-id-and-push-token)
+		- [Manipulando notificações](#handling-notifications)
+		- [Enviando e obtendo tags OneSignal](#sending-and-getting-onesignal-tags)
+		- [Obtendo ID e Token para Push](#getting-player-id-and-push-token)
 		- [Set Email for Better Targeting](#set-email-for-better-targeting)
-		- [Enable Vibration](#enable-vibration)
-		- [Enable Sound](#enable-sound)
+		- [Habilitar Vibração](#enable-vibration)
+		- [Habilitar Som](#enable-sound)
 		- [Set In App Focus Behavior](#set-in-app-focus-behavior)
-		- [Change User Subscription Status](#change-user-subscription-status)
+		- [Mudar Change User Subscription Status](#change-user-subscription-status)
 		- [Check Push Notification and User Subscription Status](#check-push-notification-and-user-subscription-status)
 		- [Post Notification (Peer-to-Peer Notifications)](#post-notification-peer-to-peer-notifications)
 		- [Prompt Location](#prompt-location)
@@ -196,7 +196,7 @@ android {
  * You're All Set!
 
 
-## Usando
+## Uso
 
 No seu `index.android.js` ou `index.ios.js`:
 ```javascript
