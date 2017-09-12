@@ -27,7 +27,7 @@ React Native Push Notifications com suporte de integração OneSignal.
 		- [Habilitar Vibração](#enable-vibration)
 		- [Habilitar Som](#enable-sound)
 		- [Set In App Focus Behavior](#set-in-app-focus-behavior)
-		- [Mudar Change User Subscription Status](#change-user-subscription-status)
+		- [Change User Subscription Status](#change-user-subscription-status)
 		- [Check Push Notification and User Subscription Status](#check-push-notification-and-user-subscription-status)
 		- [Post Notification (Peer-to-Peer Notifications)](#post-notification-peer-to-peer-notifications)
 		- [Prompt Location](#prompt-location)
