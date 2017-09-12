@@ -1,6 +1,6 @@
 # React Native OneSignal
 
-React Native Push Notifications support with OneSignal integration.
+React Native Push Notifications com suporte de integração OneSignal.
 
 [![npm version](https://img.shields.io/npm/v/react-native-onesignal.svg?style=flat-square)](https://www.npmjs.com/package/react-native-onesignal)
 [![npm downloads](https://img.shields.io/npm/dm/react-native-onesignal.svg?style=flat-square)](https://www.npmjs.com/package/react-native-onesignal)
@@ -56,50 +56,50 @@ TL;DR - Install the latest version, doesn't matter on what RN version you are.
 
 Since version 3.0.2, this module supports backwards compatibiltiy with React Native 0.39 and below, without installing a custom version. Everyone should now update to the latest version available for this module.
 
-## Running Example project
+## Executando o projeto de exemplo
 
-For your convenience, we created an example project, based on React Native 0.41.2.
-You can run this project to test configurations, debug, and build upon it.
+Para sua conveniencia, nós criamos um projeto de exemplo baseado no React Native 0.41.2.
+Você pode executar o projeto para testar as configurações, debugar e desenvolver seu aplicativo sobre o exemplo.
 
  * `git clone https://github.com/geektimecoil/react-native-onesignal`
  * `cd react-native-onesignal && cd examples && cd RNOneSignal`
  * `yarn && cd ios && pod update && cd ..`
- * Running the iOS example app: `react-native run-ios`
- * Running the Android example app: `react-native run-android`
+ * Executando o aplicativo de exemplo no iOS: `react-native run-ios`
+ * Executando o aplicativo de exemplo no Android: `react-native run-android`
 
 
-## Installation
-1. Add library to project
+## Instalação
+1. Para adicionar a biblioteca no projeto
    - `yarn add react-native-onesignal`
-   - OR `npm install --save react-native-onesignal`
-2. Link library to project
+   - Ou `npm install --save react-native-onesignal`
+2. Linkar a biblioteca no projeto
    - `react-native link react-native-onesignal`
 
-## Android Installation
+## Instalação no Android
 
-* Follow OneSignal's instructions on generating a Google Server API Key: https://documentation.onesignal.com/docs/generate-a-google-server-api-key
+* Siga as instruções do Onesginal para gerar a chave da API para o Google Server: https://documentation.onesignal.com/docs/generate-a-google-server-api-key
 
-### Adding the Code
+### Adicionando o código
 
-In your `AndroidManifest.xml`
+Em `AndroidManifest.xml`
 
 ```xml
 .....
 
-<!-- Optional - Add the necessary permissions (Choose one of those) -->
+<!-- Opcional - Adicione as permissões necessárias (Escolha um desses) -->
 
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> <!-- Approximate location - If you want to use promptLocation for letting OneSignal know the user location. -->
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> <!--  Precise location If you want to use promptLocation for letting OneSignal know the user location. -->
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> <!-- Aproximação da localização -  Se você quer usar o promptLocation para deixar o OneSignal saber sua localização.-->
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> <!--  Localização precisa, se você quer usar promptLocation para deixar o OneSignal saber sua localização. -->
 
-<!-- End optional permissions -->
+<!-- Final das permissões opcionais-->
 
 <application ....>
     <activity
-        android:launchMode="singleTop"> <!-- Add this parameter -->
+        android:launchMode="singleTop"> <!-- Adicione o parametro -->
     .....
 ```
 
-In `android/gradle/wrapper/gradle-wrapper.properties`
+Em `android/gradle/wrapper/gradle-wrapper.properties`
 ```javascript
 ...
 
@@ -110,7 +110,7 @@ zipStorePath=wrapper/dists
 distributionUrl=https://services.gradle.org/distributions/gradle-2.14.1-all.zip
 ```
 
-In `android/build.gradle`
+Em `android/build.gradle`
 ```gradle
 ...
 
@@ -122,19 +122,19 @@ dependencies {
 }
 ```
 
-In `android/app/build.gradle`
+Em `android/app/build.gradle`
 
 ```gradle
 ...
 
 android {
     ...
-    buildToolsVersion "23.0.2" // NOT REQUIRED BUT RECOMMENDED - This is good for in-process dex (faster)
+    buildToolsVersion "23.0.2" // NÃO É REQUIRIDO, MAS RECOMENDADO
     ...
     defaultConfig {
         ...
         manifestPlaceholders = [onesignal_app_id: "YOUR_ONESIGNAL_ID",
-                                onesignal_google_project_number: "REMOTE"]
+                                onesignal_google_project_number: "REMOTE"] 
     }
 }
 ```
@@ -196,9 +196,9 @@ android {
  * You're All Set!
 
 
-## Usage
+## Usando
 
-In your `index.android.js` or `index.ios.js`:
+No seu `index.android.js` ou `index.ios.js`:
 ```javascript
 import React, { Component } from 'react';
 import OneSignal from 'react-native-onesignal'; // Import package from node modules
@@ -207,36 +207,36 @@ import OneSignal from 'react-native-onesignal'; // Import package from node modu
 export default class App extends Component {
 
     componentWillMount() {
-        OneSignal.addEventListener('received', this.onReceived);
-        OneSignal.addEventListener('opened', this.onOpened);
-        OneSignal.addEventListener('registered', this.onRegistered);
-        OneSignal.addEventListener('ids', this.onIds);
+        OneSignal.addEventListener('recebendo notificação', this.onReceived);
+        OneSignal.addEventListener('abrindo notificação', this.onOpened);
+        OneSignal.addEventListener('registrando notificação', this.onRegistered);
+        OneSignal.addEventListener('id do celular', this.onIds);
     }
 
     componentWillUnmount() {
-        OneSignal.removeEventListener('received', this.onReceived);
-        OneSignal.removeEventListener('opened', this.onOpened);
-        OneSignal.removeEventListener('registered', this.onRegistered);
-        OneSignal.removeEventListener('ids', this.onIds);
+        OneSignal.removeEventListener('recebendo notificação', this.onReceived);
+        OneSignal.removeEventListener('abrindo notificação', this.onOpened);
+        OneSignal.removeEventListener('registrando notificação', this.onRegistered);
+        OneSignal.removeEventListener('id do celular', this.onIds);
     }
 
     onReceived(notification) {
-        console.log("Notification received: ", notification);
+        console.log("Notificação recebida: ", notification);
     }
 
     onOpened(openResult) {
-      console.log('Message: ', openResult.notification.payload.body);
-      console.log('Data: ', openResult.notification.payload.additionalData);
-      console.log('isActive: ', openResult.notification.isAppInFocus);
-      console.log('openResult: ', openResult);
+      console.log('Mensagem: ', openResult.notification.payload.body);
+      console.log('InformaçÕes: ', openResult.notification.payload.additionalData);
+      console.log('Está ativo: ', openResult.notification.isAppInFocus);
+      console.log('Resultado: ', openResult);
     }
 
     onRegistered(notifData) {
-        console.log("Device had been registered for push notifications!", notifData);
+        console.log("O celular foi registrado para receber notificações", notifData);
     }
 
     onIds(device) {
-		console.log('Device info: ', device);
+		console.log('Informações do celular: ', device);
     }
     ...
 }
