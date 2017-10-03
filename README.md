@@ -604,8 +604,8 @@ compile(project(':react-native-maps')){
   compile 'com.google.android.gms:play-services-maps:+'
 ```
 
-### Manually updating iOS OneSignalNativeSDK
-When you install `react-native-onesignal` it will automaticly include a specific version of the OneSignal iOS native SDK that is known to work with it. Only follow the instructions below if there is a native OneSignal SDK fix you need that isn't included already in the latest `react-native-onesignal` update.
+### Atualizando manualmente o OneSignalNativeSDK do IOS
+Quando você instala o `react-native-onesignal` será incluído automaticamente uma versão especifica do SDK IOS nativo do OneSignal que é conhecido para trabalhar com ele. Somente siga as instruções abaixo se houver uma correção nativa do OneSignal SDK que você precisa, que não está incluída na última atualização do `react-native-onesignal`.
 
 1. Download the [latest OneSignal iOS native](https://github.com/OneSignal/OneSignal-iOS-SDK/releases) release.
 2. In XCode, delete `OneSignalNativeSDK` under `Libraries/RCTOneSignal.xcodeproj`
@@ -616,8 +616,8 @@ When you install `react-native-onesignal` it will automaticly include a specific
 7. Select "Create groups" and check RCTOneSignal and press Finish.
 
 
-## CREDITS
-Thanks for all the awesome fellows that contributed to this repository!
+## CRÉDITOS
+Obrigado por todos os incríveis companheiros que contribuiram para esse repositório!
 @danpe, @lunchieapp, @gaykov, @williamrijksen, @adrienbrault, @kennym, @dunghuynh, @holmesal, @joshuapinter, @jkasten2, @JKalash
 
 ## TODO
