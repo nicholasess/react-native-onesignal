@@ -15,12 +15,12 @@ React Native Push Notifications com suporte de integração OneSignal.
 	- [Executando o exemplo do projeto](#running-example-project)
 	- [Instalação](#installation)
 	- [Instalação do Android](#android-installation)
-		- [Adding the Code](#adding-the-code)
+		- [Adicionando o código](#adding-the-code)
 	- [Instalação do IOS](#ios-installation)
-		- [Adding the Code](#adding-the-code)
+		- [Adicionando o código](#adding-the-code)
 	- [Uso](#usage)
 	- [API](#api)
-		- [Manipulando notificações](#handling-notifications)
+		- [Manipulando Notificações](#handling-notifications)
 		- [Enviando e obtendo tags OneSignal](#sending-and-getting-onesignal-tags)
 		- [Obtendo ID e Token para Push](#getting-player-id-and-push-token)
 		- [Definir email para um melhor targeting](#set-email-for-better-targeting)
@@ -35,12 +35,12 @@ React Native Push Notifications com suporte de integração OneSignal.
 		- [Cancelar Notificações (Somente Android)](#cancel-notifications-android-only)
 		- [Checar Permissões de Notificação (Somente iOS)](#check-push-notification-permissions-ios-only)
 		- [Pedir Permissões de Notificação (Somente iOS)](#request-push-notification-permissions-ios-only)
-		- [Registro para Notificação (iOS Only)](#register-for-push-notifications-ios-only)
+		- [Registro para Notificação (Somente iOS)](#register-for-push-notifications-ios-only)
 	- [FAQ / Repeating Issues](#faq--repeating-issues)
 		- [Issue 1 - Multiple dex files define:](#issue-1---multiple-dex-files-define)
 		- [Issue 2 - Multiple dex files define (Again):](#issue-2---multiple-dex-files-define-again)
 		- [Issue 3 - symbol(s) not found for architecture x86_64 and/or OneSignal/OneSignal.h file not found](#issue-3---symbols-not-found-for-architecture-x86_64-andor-onesignalonesignalh-file-not-found)
-		- [Issue 4 - Make react-native-onesignal work with react-native-maps](#issue-4---make-react-native-onesignal-work-with-react-native-maps)
+		- [Issue 4 - Fazer o react-native-onesignal trabalhar com react-native-maps](#issue-4---make-react-native-onesignal-work-with-react-native-maps)
 	- [CREDITS](#credits)
 	- [TODO](#todo)
 
@@ -145,41 +145,41 @@ android {
  * Abra a conta do OneSignal aqui: https://onesignal.com/
  * Siga as instruções do OneSignal para gerar Certificado de Push no iOS: https://documentation.onesignal.com/docs/generate-an-ios-push-certificate
 
-### Add Required Capabilities
-1. Select the root project and Under Capabilities Enable "Push Notifications".
-2. Next Enable "Background Modes" and check "Remote notifications".
+### Adicionar capacidades de requisitos
+1. Selecionar o projeto raiz e em capacidades habilitar "Push Notifications".
+2. Próximo a habilitar é "Background Modes" e checar "Remote notifications".
 ![](https://files.readme.io/VflTGOPzRDu2YmhiRgiV_Xcode%20capabilities.png)
 
-### Adding Search Paths
-1. Select your root project and go to `Build Settings`.
-2. Search for `Header Search Paths`.
-4. Add `$(SRCROOT)/../node_modules/react-native-onesignal/ios` and set it as `recursive`.
+### Adicionar pastas de pesquisa - Search Paths
+1. Selecionar o projeto raiz e ir para `Build Settings`.
+2. Procurar por `Header Search Paths`.
+4. Adicionar `$(SRCROOT)/../node_modules/react-native-onesignal/ios` e definir isso como `recursive`.
 ![image](https://cloud.githubusercontent.com/assets/645861/22847689/77819cda-efa3-11e6-81c9-bb08baf9460e.png)
 
-### Adding the Code
+### Adicionando o código
 
- * in `AppDelegate.h`:
-   * Import `RCTOneSignal.h`:
+ * Em `AppDelegate.h`:
+   * Importar `RCTOneSignal.h`:
 
        ```objc
        #import <RCTOneSignal.h>
        ```
 
-   * Declare the `RCTOneSignal` property:
+   * Declarar a propriedade `RCTOneSignal`:
 
        ```objc
        @property (strong, nonatomic) RCTOneSignal* oneSignal;
        ```
 
- * in `AppDelegate.m`:
+ * Em `AppDelegate.m`:
 
-    * Synthesize `oneSignal` after `@implementation AppDelegate`
+    * Sintetizar `oneSignal` depois `@implementation AppDelegate`
 
         ```objc
         @synthesize oneSignal = _oneSignal;
         ```
 
-    * On the `application didFinishLaunchingWithOptions` method, insert the following code (replace YOUR_ONESIGNAL_APP_ID with your OneSignal app ID):
+    * No método `application didFinishLaunchingWithOptions`, inserir o seguinte código (trocar YOUR_ONESIGNAL_APP_ID com seu ID da aplicação OneSignal):
 
         ```objc
         self.oneSignal = [[RCTOneSignal alloc] initWithLaunchOptions:launchOptions
@@ -226,7 +226,7 @@ export default class App extends Component {
 
     onOpened(openResult) {
       console.log('Mensagem: ', openResult.notification.payload.body);
-      console.log('InformaçÕes: ', openResult.notification.payload.additionalData);
+      console.log('Informações: ', openResult.notification.payload.additionalData);
       console.log('Está ativo: ', openResult.notification.isAppInFocus);
       console.log('Resultado: ', openResult);
     }
@@ -245,63 +245,63 @@ export default class App extends Component {
 
 ## API
 
-### Handling Notifications
-When any notification is opened or received the `opened` and `received` are activated and calling their callback functions defined in the listeners, passing an OSNotificationOpenResult or an OSNotification object encapsulating the event data.
+### Manipulando Notificações
+Quando quaisquer notificações é aberta ou recebida o `aberta` e `recebida` são ativos e chamam a função de callback deles, que foram definidos nos "addEventListener". Passando um OSNotificationOpenResult ou um objeto OSNotification encapsulando o data no evento.
 
 ```javascript
 componentWillMount() {
-    OneSignal.addEventListener('received', this.onReceived);
-    OneSignal.addEventListener('opened', this.onOpened);
+    OneSignal.addEventListener('recebida', this.onReceived);
+    OneSignal.addEventListener('aberta', this.onOpened);
 }
 
 componentWillUnmount() {
-    OneSignal.removeEventListener('received', this.onReceived);
-    OneSignal.removeEventListener('opened', this.onOpened);
+    OneSignal.removeEventListener('recebida', this.onReceived);
+    OneSignal.removeEventListener('aberta', this.onOpened);
 }
 
 onReceived(notification) {
-    console.log("Notification received: ", notification);
+    console.log("Notificação recebida: ", notification);
 }
 
 onOpened(openResult) {
-    console.log('Message: ', openResult.notification.payload.body);
-    console.log('Data: ', openResult.notification.payload.additionalData);
-    console.log('isActive: ', openResult.notification.isAppInFocus);
-    console.log('openResult: ', openResult);
+    console.log('Mensagem: ', openResult.notification.payload.body);
+    console.log('Informações: ', openResult.notification.payload.additionalData);
+    console.log('Está ativo: ', openResult.notification.isAppInFocus);
+    console.log('Resultado: ', openResult);
 }
 ```
 
-Notification object received example:
+Exemplo de objeto da notificação que foi recebida:
 ```javascript
 {
-    shown: true, // BOOLEAN: If the notification was displayed to the user or not
-    payload: {notificationID : "", contentAvailable : false, badge : 1, sound : "default", title : "Hello!", body : "World", launchURL : "", }, // OBJECT; the push data
-    displayType: 1, //The display method of a received notification
-    silentNotification: false // BOOLEAN : Wether the received notification was a silent one
+    shown: true, // Boleano: Se a notificação foi visualizada ou não pelo usuario.
+    payload: {notificationID : "", contentAvailable : false, badge : 1, sound : "default", title : "Hello!", body : "World", launchURL : "", }, // Objeto; A informação passada pelo server para o aplicativo.
+    displayType: 1, //O método de visualização da notificação recebida.
+    silentNotification: false // Boleano : Se a notificação recebida é silenciosa
 }
 ```
 
-### Sending and Getting OneSignal Tags
+### Enviando e recebendo tags OneSignal
 
-We exposed the tags API of OneSignal to allow you to target users with notification later.
+Nós abrimos a api com as tags do OneSignal para você segmentar seus usuários com as notifições mais tarde.
 
 ```javascript
-// Sending single tag
+// Enviando uma tag
 OneSignal.sendTag("key", "value");
 
-// Sending multiple tags
+// Enviando multiplas tags
 OneSignal.sendTags({key: "value", key2: "value2"});
 
-// Getting the tags from the server and use the received object
+// Recebendo as tags enviadas pelo server e usar o objeto recebido.
 OneSignal.getTags((receivedTags) => {
     console.log(receivedTags);
 });
 
-// Delete a tag
+// Deletar a tag
 OneSignal.deleteTag("key");
 ```
 
-### Set Email for Better Targeting
+### Definir o emaiil para uma melhor segmentação
 
 Sync hashed email if you have a login system or collect it. Will be used to reach the user at the most optimal time of day.
 
